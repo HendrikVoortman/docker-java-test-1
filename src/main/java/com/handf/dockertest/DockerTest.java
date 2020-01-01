@@ -15,8 +15,10 @@ public class DockerTest {
 		}			
 		System.out.println(builder);
 
-		final int SLEEP_DURATION = 10;
-		for (int i=1; i <= SLEEP_DURATION; i++) {
+		String nloops_value = System.getProperty("nloops", "10"); // default 10
+		final int SLEEP_DURATION = Integer.valueOf(nloops_value);
+		System.out.println("nloops=" + SLEEP_DURATION);		
+		for (int i=1; i <= SLEEP_DURATION || SLEEP_DURATION < 0; i++) {
 			System.out.println("delay=" + i);
 			Thread.sleep(1000);
 		}
